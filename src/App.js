@@ -13,13 +13,9 @@ const App = () => {
   const [search, setSearch] = useState([]);
   const [query, setQuery] = useState('chicken');
 
-
-  //2. add second arg i.e. [] to useEffect, so that it runs only once when page is loaded
-  //3. give counter inside [counter] so that for every change in counter, this is invoked
-  //we gave search inside second arg, so that when search is canged it will call getRecipe() again
-
-
-  const getRecipes = async () => {
+  useEffect(() => {
+  
+    const getRecipes = async () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     //console.log(data);
@@ -32,6 +28,16 @@ const App = () => {
     //     response.json()
     //   })
   }
+  
+    getRecipes();
+    //console.log("fetching data");
+  }, [query]);
+  //2. add second arg i.e. [] to useEffect, so that it runs only once when page is loaded
+  //3. give counter inside [counter] so that for every change in counter, this is invoked
+  //we gave search inside second arg, so that when search is canged it will call getRecipe() again
+
+
+
 
   const updateSearch = e => {
     setSearch(e.target.value);
@@ -43,12 +49,6 @@ const App = () => {
     setQuery(search);
     setSearch('');
   }
-  
-   useEffect(() => {
-    getRecipes();
-    //console.log("fetching data");
-  }, [query,getRecipes]);
-  
   return (
     <div className="App">
       <h1>Hello Rk..!</h1>
