@@ -13,10 +13,7 @@ const App = () => {
   const [search, setSearch] = useState([]);
   const [query, setQuery] = useState('chicken');
 
-  useEffect(() => {
-    getRecipes();
-    //console.log("fetching data");
-  }, [query,getRecipes]);
+
   //2. add second arg i.e. [] to useEffect, so that it runs only once when page is loaded
   //3. give counter inside [counter] so that for every change in counter, this is invoked
   //we gave search inside second arg, so that when search is canged it will call getRecipe() again
@@ -46,6 +43,12 @@ const App = () => {
     setQuery(search);
     setSearch('');
   }
+  
+   useEffect(() => {
+    getRecipes();
+    //console.log("fetching data");
+  }, [query,getRecipes]);
+  
   return (
     <div className="App">
       <h1>Hello Rk..!</h1>
