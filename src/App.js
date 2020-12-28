@@ -15,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     getRecipes();
-    console.log("fetching data");
+    //console.log("fetching data");
   }, [query]);
   //2. add second arg i.e. [] to useEffect, so that it runs only once when page is loaded
   //3. give counter inside [counter] so that for every change in counter, this is invoked
